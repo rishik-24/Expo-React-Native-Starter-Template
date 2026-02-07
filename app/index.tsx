@@ -59,7 +59,7 @@ const index = () => {
                 fontWeight: "bold",
                 fontSize: 18,
               }}>
-              Getting Started
+              Let's Get Started
             </Text>
           </TouchableOpacity>
         </Link>
