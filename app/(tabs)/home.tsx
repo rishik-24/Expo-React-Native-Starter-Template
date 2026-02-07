@@ -17,7 +17,7 @@ const home = () => {
               : Colors.light.background,
         },
       ]}>
-      <Text style={styles.title}>This is your "Home" screen</Text>
+      <Text style={styles.title}>This is "Home" screen</Text>
       <View style={styles.separator} />
     </View>
   );
