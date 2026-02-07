@@ -30,6 +30,6 @@ bun i
 
 bun expo i --fix
 
-# Start the Expo development server with a clean cache
+## Start the Expo development server with a clean cache
 
 bun start -c
