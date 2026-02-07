@@ -17,7 +17,7 @@ const settings = () => {
               : Colors.light.background,
         },
       ]}>
-      <Text style={styles.title}>This is your "Settings" screen</Text>
+      <Text style={styles.title}>This is "Settings" screen</Text>
     </View>
   );
 };
