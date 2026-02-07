@@ -1,4 +1,4 @@
-# Expo React Native Starter 🚀
+## Expo React Native Starter 🚀
 
 A clean and scalable Expo + React Native starter template.
 
@@ -22,11 +22,11 @@ GitHub: https://github.com/rishik-24
 
 Just playing with react native and expo. Feel free to use anything anywhere.
 
-# Install dependencies
+## Install dependencies
 
 bun i
 
-# Update to latest version dependencies
+## Update to latest version dependencies
 
 bun expo i --fix
 
