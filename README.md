@@ -22,13 +22,13 @@ GitHub: https://github.com/rishik-24
 
 Just playing with react native and expo. Feel free to use anything anywhere.
 
-## Install dependencies
+## Install dependencies (Bun recomended)
 ```
 bun i
 ```
-## Update to latest version dependencies
+## Update to latest version and dependencies
 ```
-bun expo i --fix
+bun expo install --fix
 ```
 ## Start the Expo development server with a clean cache
 ```
