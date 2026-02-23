@@ -1,73 +1,183 @@
-import { ThemeContext } from "@/src/theme/ThemeContext";
 import { Colors } from "@/utils/Colors";
-import { Link } from "expo-router";
-import LottieView from "lottie-react-native";
-import React, { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Animated from "react-native-reanimated";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import React from "react";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-const index = () => {
-  const { currentTheme } = useContext(ThemeContext);
+export default function Index() {
+  const [selected, setSelected] = React.useState("");
+  const [preference, setPreference] = React.useState("");
+
+  const prefarenceOptions = [
+    {
+      id: 1,
+      name: "Delivery",
+      icon: (
+        <MaterialIcons
+          name="delivery-dining"
+          size={50}
+          color={
+            preference === "delivery" ? Colors.hatari.red : Colors.light.text
+          }
+        />
+      ),
+      value: "delivery",
+    },
+    {
+      id: 2,
+      name: "Takeaway",
+      icon: (
+        <Ionicons
+          name="bag-handle"
+          size={50}
+          color={
+            preference === "takeaway" ? Colors.hatari.red : Colors.light.text
+          }
+        />
+      ),
+      value: "takeaway",
+    },
+  ];
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        paddingTop: 100,
-        paddingHorizontal: 20,
-        backgroundColor:
-          currentTheme === "dark"
-            ? Colors.dark.background
-            : Colors.light.background,
-      }}>
-      <View>
-        <LottieView
-          autoPlay
-          loop
-          style={{ width: 300, height: 300 }}
-          source={{
-            uri: "https://lottie.host/acae7b74-6912-4bb5-b22c-f40a500954ea/YOW2KPfcUd.lottie",
-          }}
-        />
-      </View>
-
-      <Animated.View
-        style={{
-          position: "absolute",
-          bottom: 90,
-          borderRadius: 10,
-          width: "100%",
-          alignItems: "center",
-        }}>
-        <Link
-          href="/(tabs)/home"
-          asChild>
-          <TouchableOpacity
+    <>
+      <SafeAreaProvider style={{ marginHorizontal: 20 }}>
+        <View
+          style={{
+            height: "30%",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            paddingBottom: 20,
+          }}>
+          <View
             style={{
-              backgroundColor: "#2f9bffff",
-              height: 50,
-              width: "100%",
-              justifyContent: "center",
               alignItems: "center",
-              borderRadius: 30,
+              padding: 20,
             }}>
+            <Text style={{ fontSize: 30 }}>Welcome to</Text>
             <Text
               style={{
-                color: "white",
+                fontSize: 40,
                 fontWeight: "bold",
-                fontSize: 18,
+                color: Colors.hatari.red,
               }}>
-              Let's Get Started
+              Hatari
             </Text>
-          </TouchableOpacity>
-        </Link>
-      </Animated.View>
-    </View>
-  );
-};
+          </View>
+          <Text>Indian • Chinese • Tandoor</Text>
+        </View>
+        <View
+          style={{
+            height: "30%",
+            paddingTop: 20,
+          }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "400",
+              alignItems: "center",
+              gap: 4,
+            }}>
+            Your nearest branch
+          </Text>
 
-export default index;
+          <Pressable
+            onPress={() => setSelected("madhyamgram")}
+            style={{
+              paddingHorizontal: 20,
+              marginTop: 20,
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 12,
+              borderWidth: 2,
+              borderColor:
+                selected === "madhyamgram"
+                  ? Colors.hatari.red
+                  : Colors.light.border,
+              backgroundColor: Colors.light.card,
+              borderRadius: 12,
+              paddingVertical: 20,
+            }}>
+            <Image
+              source={require("../assets/images/hatari-logo-2.jpg")}
+              style={{ width: 110, height: 80 }}
+            />
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+              Hatari Madhyamgram
+            </Text>
+          </Pressable>
+        </View>
+
+        <View
+          style={{
+            paddingTop: 10,
+            height: "20%",
+          }}>
+          <Text style={{ fontSize: 16, fontWeight: "400" }}>
+            Your your prefarence
+          </Text>
+          <View style={{ flexDirection: "row", gap: 12 }}>
+            {prefarenceOptions.map((items) => (
+              <Pressable
+                key={items.id}
+                onPress={() => setPreference(items.value)}
+                style={{
+                  width: "48%",
+                  marginTop: 20,
+                  height: 120,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 12,
+                  borderWidth: 2,
+                  borderColor:
+                    preference === items.value
+                      ? Colors.hatari.red
+                      : Colors.light.border,
+                  backgroundColor: Colors.light.card,
+                  borderRadius: 12,
+                }}>
+                {items.icon}
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    color:
+                      preference === items.value
+                        ? Colors.hatari.red
+                        : Colors.light.text,
+                  }}>
+                  {items.name}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+
+        <TouchableOpacity
+          onPress={() => router.push("/(tabs)/home")}
+          style={{
+            backgroundColor: Colors.hatari.red,
+            paddingVertical: 16,
+            borderRadius: 12,
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 50,
+          }}>
+          <Text style={{ color: Colors.light.card, fontWeight: "bold" }}>
+            Continue
+          </Text>
+        </TouchableOpacity>
+      </SafeAreaProvider>
+    </>
+  );
+}
 
 const styles = StyleSheet.create({});

@@ -1,7 +1,7 @@
 import ThemeProvider from "@/src/theme/ThemeContext";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Slot, Stack } from "expo-router";
+import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
@@ -50,21 +50,8 @@ function RootLayoutNav() {
 
   return (
     <>
-      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-      <ThemeProvider
-        Children={
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              statusBarStyle: colorScheme === "dark" ? "light" : "dark",
-              headerTitleStyle: {
-                fontFamily: "RobotoMono",
-              },
-            }}>
-            <Slot />
-          </Stack>
-        }
-      />
+      <StatusBar style={"dark"} />
+      <ThemeProvider Children={<Slot />} />
     </>
   );
 }

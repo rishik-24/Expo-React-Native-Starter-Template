@@ -1,22 +1,10 @@
-import { ThemeContext } from "@/src/theme/ThemeContext";
 import { Colors } from "@/utils/Colors";
-import React, { useContext } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const settings = () => {
-  const { currentTheme } = useContext(ThemeContext);
-
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          backgroundColor:
-            currentTheme === "dark"
-              ? Colors.dark.background
-              : Colors.light.background,
-        },
-      ]}>
+    <View style={[styles.container]}>
       <Text style={styles.title}>This is "Settings" screen</Text>
     </View>
   );
@@ -30,6 +18,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
+    backgroundColor: Colors.light.background,
   },
   title: {
     fontSize: 25,

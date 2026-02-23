@@ -1,19 +1,17 @@
 export const Colors = {
-  primary: "#2f9bffff",
+  primary: "#ef183c",
   secondary: "#f9236eff",
-
-  light: {
-    background: "#edf6f9",
-    text: "#011627",
-    card: "#F9FAFB",
-    border: "#E5E7EB",
+  hatari: {
+    red: "#ef183c",
+    darkGrey: "#374151",
+    lightGrey: "#9CA3AF",
   },
 
-  dark: {
-    background: "#00171f",
-    text: "#edf6f9",
-    card: "#1E293B",
-    border: "#334155",
+  light: {
+    background: "#FFFFFF",
+    text: "#374151",
+    card: "#FFFFFF",
+    border: "#E5E7EB",
   },
 };
 
