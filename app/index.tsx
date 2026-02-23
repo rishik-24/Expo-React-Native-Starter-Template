@@ -122,7 +122,7 @@ export default function Index() {
             height: "20%",
           }}>
           <Text style={{ fontSize: 16, fontWeight: "400" }}>
-            Your your prefarence
+            Select your prefarence
           </Text>
           <View style={{ flexDirection: "row", gap: 12 }}>
             {prefarenceOptions.map((items) => (
@@ -162,6 +162,7 @@ export default function Index() {
         </View>
 
         <TouchableOpacity
+          disabled={!preference || !selected}
           onPress={() => router.push("/(tabs)/home")}
           style={{
             backgroundColor: Colors.hatari.red,
@@ -170,6 +171,7 @@ export default function Index() {
             alignItems: "center",
             justifyContent: "center",
             marginTop: 50,
+            opacity: !preference || !selected ? 0.5 : 1,
           }}>
           <Text style={{ color: Colors.light.card, fontWeight: "bold" }}>
             Continue
